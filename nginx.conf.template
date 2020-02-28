@@ -9,15 +9,15 @@ events {
 
 http {
   server {
-    listen 80;
+    listen $PROXY_PORT;
     location / {
-      proxy_pass http://$FRONTEND:3000/;
+      proxy_pass http://$FRONTEND_HOST:3000/;
     }
     location /api {
-      proxy_pass http://$BACKEND/api;
+      proxy_pass http://$BACKEND_HOST/api;
     }
     location /media {
-      proxy_pass http://$BACKEND/media;
+      proxy_pass http://$BACKEND_HOST/media;
     }
   }
 }
